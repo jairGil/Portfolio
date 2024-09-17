@@ -1,0 +1,39 @@
+<div class="glass-card p-3 row" id="experiencia">
+  <p class="h2">Experiencia</p>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <ul class="timeline">
+        @for (experience of experiences; track $index) {
+        <li class="mb-5">
+          <section class="border border-2 rounded rounded-2 p-3">
+            <span class="d-flex justify-content-between">
+              <div class="d-flex flex-column">
+                <h4 class="fw-bold">{{ experience.company }}</h4>
+                <span class="">{{ experience.position }}</span>
+              </div>
+              <span class="fw-bold w-25 text-end">{{ experience.period }}</span>
+            </span>
+            <hr>
+            <h5 class="fw-bold"> {{ experience.project }} </h5>
+            <p>{{ experience.description }}</p>
+            <h5 class="fw-bold">Tecnologías Utilizadas</h5>
+            <ul>
+              @for (technology of experience.technologies; track $index) {
+                <li>{{ technology.type }}: {{ technology.name }}</li>
+              }
+            </ul>
+
+            <div class="mt-5 mb-3 d-flex flex-wrap gap-2 justify-content-center">
+              @for (technology of experience.technologies; track $index) {
+                @for (icon of technology.icon.split(', '); track $index) {
+                  <img [src]="icon" [alt]="technology.name">
+                }
+              }
+            </div>
+          </section>
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+</div>
